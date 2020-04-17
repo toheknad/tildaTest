@@ -14,6 +14,7 @@
   Мы просим не тратить ,много времени, в идеале 3-4 часа.
   
 Стек: Zend(mezzio), JQuery
+
 Установка:
 1. docker-compose up --build -d (запуск контейнеров)
 2. docker-compose exec php-cli composer install (установка зависимостей)
