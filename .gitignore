@@ -1,0 +1,4 @@
+backend/vendor
+db
+backend/composer.lock
+.idea

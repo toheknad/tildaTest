@@ -1,0 +1,66 @@
+{% extends "@app/layout/main.html.twig" %}
+
+{% block content %}
+    <div class="container-fluid ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-2">
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Navbar</h1>
+                        <button type="button"  onclick="load('standart', 'navbar')" class="btn btn-primary btn-sm">Стандартная</button>
+                        <button type="button" onclick="load('dark', 'navbar')" class="btn btn-primary btn-sm">Темная</button>
+                        <button type="button" onclick="load('white', 'navbar')" class="btn btn-primary btn-sm">Светлая</button>
+                    </div>
+                </div>
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Body</h1>
+                        <button type="button" onclick="load('standart', 'body')" class="btn btn-success btn-sm">Стандартная</button>
+                        <button type="button" onclick="load('dark', 'body')" class="btn btn-success btn-sm">Темная</button>
+                        <button type="button" onclick="load('white', 'body')" class="btn btn-success btn-sm">Светлая</button>
+                    </div>
+                </div>
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Footer</h1>
+                        <button type="button" onclick="load('standart', 'footer')" class="btn btn-success btn-sm">Стандартная</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="div mb-3" id="navbar">
+
+                </div>
+                <div class="div mb-4" id="body">
+
+                </div>
+                <div class="div mb-3" id="footer">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block javascript %}
+<script>
+    function load(key, component) {
+        $.ajax({
+            url: "component/load",
+            data: {key:key,component:component},
+            success: function(response){
+                //проверка на дочернии элементы, если true, то удаляем при добавлении нового шаблона
+                if($('#'+component).children().length > 0){
+                    $('#'+component).empty()
+                }
+                $('#'+component).append(response);
+                console.log('#'+component);
+            }
+        });
+    }
+
+</script>
+{% endblock %}

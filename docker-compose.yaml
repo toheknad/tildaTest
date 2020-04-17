@@ -1,0 +1,24 @@
+version: '3'
+services:
+  api-nginx:
+    build:
+      context: ./backend/docker
+      dockerfile: nginx.docker
+    volumes:
+      - ./backend:/var/www/backend
+    ports:
+      - "8081:80"
+  api-php-fpm:
+    build:
+      context: ./backend/docker
+      dockerfile: php-fpm.docker
+    volumes:
+      - ./backend:/var/www/backend
+  api-php-cli:
+    build:
+      context: ./backend/docker
+      dockerfile: php-cli.docker
+    volumes:
+      - ./backend:/var/www/backend
+    working_dir: /var/www/backend
+    tty: true
