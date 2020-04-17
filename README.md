@@ -17,5 +17,5 @@
 
 Установка:
 1. docker-compose up --build -d (запуск контейнеров)
-2. docker-compose exec php-cli composer install (установка зависимостей)
+2. docker-compose exec api-php-cli composer install (установка зависимостей)
 3. Сайт доступен по localhost:8081
